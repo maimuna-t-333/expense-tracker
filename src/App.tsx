@@ -1,12 +1,13 @@
 import React from 'react'
+import ExpenseTracker from './components/ExpenseTracker'
 
 function App() {
+  
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-      </div>
+    <ExpenseTracker></ExpenseTracker>
+    </div>
+
   )
 }
 
