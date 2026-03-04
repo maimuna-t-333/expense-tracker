@@ -44,6 +44,24 @@ export default function ExpenseTracker() {
                         Add Expense</button>
 
                 </div>
+
+                <ul className='space-y-4 mb-6'>
+                    {
+                        expenses.map((expense) => (
+                            <li key={expense.id} className='flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-sm transition-transform transform hover:scale-105'>
+                                <span className='text-gray-800 font-semibold'>
+                                    {expense.description}: <span className='text-gray-600'>
+                                        ${expense.amount.toFixed(2)}
+                                    </span>
+                                </span>
+                                <button className='bg-red-500 text-white px-3 py-1 rounded-lg shadow-md hover:bg-red-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-red-500'
+                                onClick={()=>removeExpense(expense.id)}>
+                                    Delete
+                                </button>
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
         </div>
     )
