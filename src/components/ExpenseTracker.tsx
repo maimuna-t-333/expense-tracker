@@ -58,7 +58,7 @@ export default function ExpenseTracker() {
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
         doc.setTextColor(120);
-        doc.text(`Generated: ${new Date().toLocaleDateString()}`, 105, 28, { align: 'center' });
+        doc.text(`Created : ${new Date().toLocaleDateString()}`, 105, 28, { align: 'center' });
         doc.setTextColor(0);
 
         // Table header
@@ -67,8 +67,9 @@ export default function ExpenseTracker() {
         doc.setTextColor(255);
         doc.setFontSize(11);
         doc.setFont('helvetica', 'bold');
-        doc.text('Description', 18, 43);
-        doc.text('Amount (BDT)', 160, 43);
+        doc.text('No.', 18, 43);
+        doc.text('Description', 30, 43);
+        doc.text('Amount', 160, 43);
         doc.setTextColor(0);
 
         // Table rows
@@ -80,19 +81,22 @@ export default function ExpenseTracker() {
             }
             doc.setFont('helvetica', 'normal');
             doc.setFontSize(10);
-            doc.text(expense.description, 18, y);
-            doc.text(`\u09F3${expense.amount.toFixed(2)}`, 160, y);
+            doc.text(`${index+1}.`, 18, y);
+            doc.text(expense.description, 30, y);
+            doc.text(expense.amount.toFixed(2), 160, y);
             y += 12;
         });
 
         // Total row
-        doc.setFillColor(55, 65, 81);
-        doc.rect(14, y - 4, 182, 12, 'F');
-        doc.setTextColor(255);
+        doc.setFillColor(243, 244, 246);  
+        
+       doc.rect(14, y - 6, 182, 14, 'F'); 
+         
+        doc.setTextColor(0);
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(12);
         doc.text('Total', 18, y + 4);
-        doc.text(`\u09F3${total.toFixed(2)}`, 160, y + 4);
+        doc.text(total.toFixed(2), 160, y + 4);
 
         doc.save('expenses.pdf');
     }
@@ -100,7 +104,7 @@ export default function ExpenseTracker() {
 
     return (
         <div className='min-h-screen flex items-center justify-center bg-gradient-to-r from-gray-300 to-gray-500 '>
-            <div className='bg-white p-8 rounded-lg shadow-xl w-full max-w-lg'>
+            <div className='bg-white p-8 rounded-lg shadow-xl w-full max-w-lg '>
                 <h1 className='text-4xl font-extrabold mb-3 text-center text-black'>
                     Expense Tracker
                 </h1>
@@ -172,11 +176,11 @@ export default function ExpenseTracker() {
 
                 <div className='text-center space-y-4'>
                     <h2 className='text-2xl font-semibold text-gray-700'>
-                        Total Expenses:৳
+                        Total Expenses:
                         {
                             expenses.reduce((total, expense) => total + expense.amount, 0
                             ).toFixed(2)
-                        }
+                        } /-
                     </h2>
                     <button onClick={handleDownloadPDF}
                     disabled={expenses.length===0}
