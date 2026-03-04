@@ -58,7 +58,7 @@ export default function ExpenseTracker() {
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
         doc.setTextColor(120);
-        doc.text(`Created : ${new Date().toLocaleDateString()}`, 105, 28, { align: 'center' });
+        doc.text(`Created on: ${new Date().toLocaleDateString()}`, 105, 28, { align: 'center' });
         doc.setTextColor(0);
 
         // Table header
