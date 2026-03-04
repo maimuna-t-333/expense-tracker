@@ -51,17 +51,27 @@ export default function ExpenseTracker() {
                             <li key={expense.id} className='flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-sm transition-transform transform hover:scale-105'>
                                 <span className='text-gray-800 font-semibold'>
                                     {expense.description}: <span className='text-gray-600'>
-                                        ${expense.amount.toFixed(2)}
+                                        ৳{expense.amount.toFixed(2)}
                                     </span>
                                 </span>
                                 <button className='bg-red-500 text-white px-3 py-1 rounded-lg shadow-md hover:bg-red-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-red-500'
-                                onClick={()=>removeExpense(expense.id)}>
+                                    onClick={() => removeExpense(expense.id)}>
                                     Delete
                                 </button>
                             </li>
                         ))
                     }
                 </ul>
+
+                <div className='text-center'>
+                    <h2 className='text-2xl font-semibold text-gray-700'>
+                        Total Expenses:৳ {""}
+                        {
+                            expenses.reduce((total,expense)=>total+expense.amount,0
+                            ).toFixed(2)
+                        }
+                    </h2>
+                </div>
             </div>
         </div>
     )
