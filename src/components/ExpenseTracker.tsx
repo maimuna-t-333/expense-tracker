@@ -130,13 +130,13 @@ export default function ExpenseTracker() {
                                     <div className='space-y-2'>
                                         <input type="text" value={editDescription}
                                             onChange={(e) => setEditDescription(e.target.value)}
-                                            className='w-full px-3 py-2 border-2 border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400' />
+                                            className='w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400' />
                                         <input type="number" value={editAmount}
                                             onChange={(e) => setEditAmount(e.target.value === "" ? "" : +e.target.value)}
-                                            className='w-full px-3 py-2 border-2 border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400' />
+                                            className='w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:gray-blue-400' />
                                         <div className='flex gap-2 '>
                                             <button onClick={handleSaveEdit}
-                                                className='bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition duration-200'>
+                                                className='bg-gray-600 text-white px-3 py-1 rounded-lg hover:bg-gray-700 transition duration-200'>
                                                 Save
                                             </button>
                                             <button onClick={handleCancelEdit}
@@ -148,13 +148,13 @@ export default function ExpenseTracker() {
                                     </div>
                                 ) : (
                                     <div className='flex justify-between items-center w-full'>
-                                        <span className='text-gray-800 font-semibold'>
+                                        <span className='text-gray-800 font-bold'>
                                             {index+1}. {expense.description}: <span className='text-gray-600'>
                                                 {expense.amount.toFixed(2)}/-
                                             </span>
                                         </span>
                                         <div className='flex gap-3 '>
-                                            <button className='bg-blue-500 text-white px-3 py-1 rounded-lg shadow-md hover:bg-blue-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                                            <button className='bg-gray-500 text-white px-3 py-1 rounded-lg shadow-md hover:bg-gray-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500'
                                                 onClick={() => handleEdit(expense.id, expense.description, expense.amount)}>
                                                 Edit
                                             </button>
