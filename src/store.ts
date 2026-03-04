@@ -10,6 +10,7 @@ interface ExpenseStore{
     expenses:Expense[];
     addExpense:(expense:Expense)=>void;
     removeExpense:(id:number)=>void;
+    updateExpense:(id:number, description:string, amount:number)=>void;
 
 }
 
@@ -24,5 +25,12 @@ export const useStore=create<ExpenseStore>((set)=>({
         set((state)=>({
             expenses:state.expenses.filter((expense)=>expense.id!==id)
         }))
+    },
+    updateExpense:(id,description,amount)=>{
+        set((state)=>({
+            expenses:state.expenses.map((expense)=>
+            expense.id === id ? {...expense, description,amount}: expense)
+        }))
     }
+
 }))
